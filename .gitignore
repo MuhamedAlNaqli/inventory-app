@@ -39,3 +39,22 @@ yarn-error.*
 # generated native folders
 /ios
 /android
+
+# Build artifacts
+*.apk
+*.aab
+*.ipa
+
+# Keystores — never commit these
+*.keystore
+
+# Environment / secrets
+.env
+.env.*
+!.env.example
+
+# Editors
+.idea/
+.vscode/
+*.swp
+Thumbs.db
