@@ -1,11 +1,15 @@
 import "../global.css";
 import { Stack } from "expo-router";
 import { StatusBar } from "expo-status-bar";
-import { SafeAreaProvider } from "react-native-safe-area-context";
+import { View } from "react-native";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 export default function RootLayout() {
+
+  const insets = useSafeAreaInsets();
+
   return (
-    <SafeAreaProvider>
+    <>
       <StatusBar style="dark" />
       <Stack
         screenOptions={{
@@ -14,8 +18,9 @@ export default function RootLayout() {
           headerShadowVisible: false,
           contentStyle: { backgroundColor: "#FAFAF9" },
         }}
+        initialRouteName="login"
       >
-        <Stack.Screen name="index" options={{ title: "Inventories" }} />
+        <Stack.Screen name="inventory/index" options={{ title: "Inventories" }} />
         <Stack.Screen
           name="inventory/new"
           options={{ title: "New inventory", presentation: "modal" }}
@@ -36,7 +41,11 @@ export default function RootLayout() {
           name="inventory/[id]/item/[itemId]"
           options={{ title: "Edit item", presentation: "modal" }}
         />
+        <Stack.Screen
+          name="login"
+          options={{headerShown: false}}
+          />
       </Stack>
-    </SafeAreaProvider>
+    </>
   );
 }
